@@ -16,44 +16,44 @@
 				<div class="row">
 					<div class="col-md-6">
 						<label>Orientacja</label>
-						<label class="radio-inline"><input type="radio" name="orientation" checked>pozioma</input></label>
-						<label class="radio-inline"><input type="radio" name="orientation">pionowa</input></label>
+						<label class="radio-inline"><input type="radio" name="orientation" value="l" id="landscape" checked>pozioma</input></label>
+						<label class="radio-inline"><input type="radio" name="orientation" value="p" id="portrait">pionowa</input></label>
 					</div>
 					<div class="col-md-6">
 						<label>Format</label>
-						<label class="radio-inline"><input type="radio" name="format" checked>A4</input></label>
-						<label class="radio-inline"><input type="radio" name="format">A5</input></label>
+						<label class="radio-inline"><input type="radio" name="format" value="A4" id="a4" checked>A4</input></label>
+						<label class="radio-inline"><input type="radio" name="format" value="A%" id="a5">A5</input></label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<label>Tytuł</label>
 						<label class="radio-inline">
-							<input type="radio" name="title" checked>własny</input>
-							<input type="text" placeholder="tytuł"></input>
+							<input type="radio" name="title" id="own-title-radio" checked>własny</input>
+							<input type="text" placeholder="tytuł" id="own-title"></input>
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="title">data</input>
-							<input type="date"></input>
+							<input type="radio" name="title" id="date">data</input>
+							<input type="date" id="get-date"></input>
 						</label>
-						<label class="radio-inline"><input type="radio" name="title">data od... do...</input>
-							<input type="date"></input>
-							<input type="date"></input>
+						<label class="radio-inline"><input type="radio" name="title" id="date-from-to">data od... do...</input>
+							<input type="date" id="get-date-from"></input>
+							<input type="date" id="get-date-to"></input>
 						</label>
-						<label class="radio-inline"><input type="radio" name="title">dzień tygodnia</input>
-							<select>
-								<option>poniedziałek</option>
-								<option>wtorek</option>
-								<option>środa</option>
-								<option>czwartek</option>
-								<option>piątek</option>
-								<option>sobota</option>
-								<option>niedziela</option>
+						<label class="radio-inline"><input type="radio" name="title" id="day-of-week">dzień tygodnia</input>
+							<select id="get-day-of-week">
+								<option value="poniedziałek">poniedziałek</option>
+								<option value="wtorek">wtorek</option>
+								<option value="sroda">sroda</option>
+								<option value="czwartek">czwartek</option>
+								<option value="piatek">piatek</option>
+								<option value="sobota">sobota</option>
+								<option value="niedziela">niedziela</option>
 							</select>
 						</label>
 					</div>
 				</div>
-				<button type="button" class="btn btn-primary">generuj</button>
+				<button type="button" class="btn btn-primary" onclick="generate();">generuj</button>
 			</div>
 		</div>
 	</body>
