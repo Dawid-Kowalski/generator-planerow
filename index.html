@@ -8,8 +8,52 @@
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body>
-		<div class="container-fluid text-center">
+		<div class="container text-center">
 			<h1>generator planerów</h1>
+			<div class="panel panel-default">
+				<h4>ustawienia główne</h4>
+				<div class="row">
+					<div class="col-md-6">
+						<label>Orientacja</label>
+						<label class="radio-inline"><input type="radio" name="orientation" checked>pozioma</input></label>
+						<label class="radio-inline"><input type="radio" name="orientation">pionowa</input></label>
+					</div>
+					<div class="col-md-6">
+						<label>Format</label>
+						<label class="radio-inline"><input type="radio" name="format" checked>A4</input></label>
+						<label class="radio-inline"><input type="radio" name="format">A5</input></label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<label>Tytuł</label>
+						<label class="radio-inline">
+							<input type="radio" name="title" checked>własny</input>
+							<input type="text" placeholder="tytuł"></input>
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="title">data</input>
+							<input type="date"></input>
+						</label>
+						<label class="radio-inline"><input type="radio" name="title">data od... do...</input>
+							<input type="date"></input>
+							<input type="date"></input>
+						</label>
+						<label class="radio-inline"><input type="radio" name="title">dzień tygodnia</input>
+							<select>
+								<option>poniedziałek</option>
+								<option>wtorek</option>
+								<option>środa</option>
+								<option>czwartek</option>
+								<option>piątek</option>
+								<option>sobota</option>
+								<option>niedziela</option>
+							</select>
+						</label>
+					</div>
+				</div>
+				<button type="button" class="btn btn-primary">generuj</button>
+			</div>
 		</div>
 	</body>
 </html>
