@@ -147,63 +147,73 @@ function drawGridLandscape (planner) {
 		gridColumns.push(columns);
 	}
 
-	let gridLandscape1rowHigh = document.getElementById("grid-landscape-1-row-high").value;
-	let gridLandscape2rowHigh = document.getElementById("grid-landscape-2-row-high").value;
-	let gridLandscape3rowHigh = document.getElementById("grid-landscape-3-row-high").value;
+	let gridLandscapeRowsHigh = [];
+
+//procenty wysokości
+	for(let i=1; i<= rows; i++){
+		let gridLandscapeRowHigh = document.getElementById("grid-landscape-"+i+"-row-high").value;
+		gridLandscapeRowsHigh.push(gridLandscapeRowHigh);
+	}
 
 	let plannerHigh = vertical - marginTopInMM - marginBottomInMM - fontTitleInMM;
 	let plannerWidth = horizontal - marginLeftInMM - marginRightInMM;
 
 
-	let firstRowHigh = plannerHigh * (gridLandscape1rowHigh/100);
-	let secondRowHigh = plannerHigh * (gridLandscape2rowHigh/100);
+	let rowsHigh = [];
+
+//wartości w milimetrach
+	for(let i=0; i<gridLandscapeRowsHigh.length; i++) {
+		let rowHigh = plannerHigh * (gridLandscapeRowsHigh[i]/100);
+		rowsHigh.push(rowHigh);
+	}
+
 
 	if(2==rows){
 
-		planner.line(marginLeftInMM, marginTopInMM + fontTitleInMM + firstRowHigh, horizontal - marginRightInMM, marginTopInMM + fontTitleInMM + firstRowHigh);
+		planner.line(marginLeftInMM, marginTopInMM + fontTitleInMM + rowsHigh[0], horizontal - marginRightInMM, marginTopInMM + fontTitleInMM + rowsHigh[0]);
 
-		let gridLandscapeRowCol1Width = plannerWidth / gridColumns[0];
+		gridLandscapeRowsHigh[1] = plannerWidth / gridColumns[0];
 
 		for(i = 0; i< gridColumns[0]; i++) {
-			planner.line(marginLeftInMM + i*gridLandscapeRowCol1Width, marginTopInMM + fontTitleInMM, marginLeftInMM + i*gridLandscapeRowCol1Width, marginTopInMM + fontTitleInMM + firstRowHigh);
+			planner.line(marginLeftInMM + i*gridLandscapeRowsHigh[1], marginTopInMM + fontTitleInMM, marginLeftInMM + i*gridLandscapeRowsHigh[1], marginTopInMM + fontTitleInMM + rowsHigh[0]);
 		}
 
-		let gridLandscapeRowCol2Width = plannerWidth / gridColumns[1];
+		gridLandscapeRowsHigh[2] = plannerWidth / gridColumns[1];
 
 		for(i = 0; i< gridColumns[1]; i++) {
-			planner.line(marginLeftInMM + i*gridLandscapeRowCol2Width, marginTopInMM + fontTitleInMM + firstRowHigh, marginLeftInMM + i*gridLandscapeRowCol2Width, vertical - marginBottomInMM);
+			planner.line(marginLeftInMM + i*gridLandscapeRowsHigh[2], marginTopInMM + fontTitleInMM + rowsHigh[0], marginLeftInMM + i*gridLandscapeRowsHigh[2], vertical - marginBottomInMM);
 		}
 	}
 
 	if(3==rows){
 
-		planner.line(marginLeftInMM, marginTopInMM + fontTitleInMM + firstRowHigh, horizontal - marginRightInMM, marginTopInMM + fontTitleInMM + firstRowHigh);
-		planner.line(marginLeftInMM, marginTopInMM + fontTitleInMM + firstRowHigh + secondRowHigh, horizontal - marginRightInMM, marginTopInMM + fontTitleInMM + firstRowHigh + secondRowHigh);
+		planner.line(marginLeftInMM, marginTopInMM + fontTitleInMM + rowsHigh[0], horizontal - marginRightInMM, marginTopInMM + fontTitleInMM + rowsHigh[0]);
+		planner.line(marginLeftInMM, marginTopInMM + fontTitleInMM + rowsHigh[0] + rowsHigh[1], horizontal - marginRightInMM, marginTopInMM + fontTitleInMM + rowsHigh[0] + rowsHigh[1]);
 
 
-		let gridLandscapeRowCol1Width = plannerWidth / gridColumns[0];
+		gridLandscapeRowsHigh[1] = plannerWidth / gridColumns[0];
 
 		for(i = 0; i< gridColumns[0]; i++) {
-			planner.line(marginLeftInMM + i*gridLandscapeRowCol1Width, marginTopInMM + fontTitleInMM, marginLeftInMM + i*gridLandscapeRowCol1Width, marginTopInMM + fontTitleInMM + firstRowHigh);
+			planner.line(marginLeftInMM + i*gridLandscapeRowsHigh[1], marginTopInMM + fontTitleInMM, marginLeftInMM + i*gridLandscapeRowsHigh[1], marginTopInMM + fontTitleInMM + rowsHigh[0]);
 		}
 
-		let gridLandscapeRowCol2Width = plannerWidth / gridColumns[1];
+		gridLandscapeRowsHigh[2] = plannerWidth / gridColumns[1];
 
 		for(i = 0; i< gridColumns[1]; i++) {
-			planner.line(marginLeftInMM + i*gridLandscapeRowCol2Width, marginTopInMM + fontTitleInMM + firstRowHigh, marginLeftInMM + i*gridLandscapeRowCol2Width, marginTopInMM + fontTitleInMM + firstRowHigh + secondRowHigh);
+			planner.line(marginLeftInMM + i*gridLandscapeRowsHigh[2], marginTopInMM + fontTitleInMM + rowsHigh[0], marginLeftInMM + i*gridLandscapeRowsHigh[2], marginTopInMM + fontTitleInMM + rowsHigh[0] + rowsHigh[1]);
 		}
 
-		let gridLandscapeRowCol3Width = plannerWidth / gridColumns[2];
+		gridLandscapeRowsHigh[3] = plannerWidth / gridColumns[2];
 
 		for(i = 0; i< gridColumns[2]; i++) {
-			planner.line(marginLeftInMM + i*gridLandscapeRowCol3Width, marginTopInMM + fontTitleInMM + firstRowHigh + secondRowHigh, marginLeftInMM + i*gridLandscapeRowCol3Width, vertical - marginBottomInMM);
+			planner.line(marginLeftInMM + i*gridLandscapeRowsHigh[3], marginTopInMM + fontTitleInMM + rowsHigh[0] + rowsHigh[1], marginLeftInMM + i*gridLandscapeRowsHigh[3], vertical - marginBottomInMM);
 		}	
 
 	}
 
 	if(1==rows){
 
-		let gridLandscapeRowColWidth = plannerWidth / gridColumns[0];
+		gridLandscapeRowColWidth = plannerWidth / gridColumns[0];
 
 		for(i = 0; i< gridColumns[0]; i++) {
 			planner.line(marginLeftInMM + i*gridLandscapeRowColWidth, marginTopInMM + fontTitleInMM, marginLeftInMM + i*gridLandscapeRowColWidth, vertical - marginBottomInMM);
